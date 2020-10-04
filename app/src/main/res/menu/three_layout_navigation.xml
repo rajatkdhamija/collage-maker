@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/three_horizontal"
+        android:enabled="true"
+        android:icon="@drawable/ic_three_horizontal"
+        android:title="@string/text"/>
+
+    <item
+        android:id="@+id/three_vertical"
+        android:enabled="true"
+        android:icon="@drawable/ic_three_vertical"
+        android:title="@string/layout"/>
+
+    <item
+        android:id="@+id/two_left_vertical_one_right"
+        android:enabled="true"
+        android:icon="@drawable/ic_two_left_vertical_one_right"
+        android:title="@string/layout"/>
+
+    <item
+        android:id="@+id/two_right_vertical_one_left"
+        android:enabled="true"
+        android:icon="@drawable/ic_two_right_vertical_one_left"
+        android:title="@string/layout"/>
+
+    <item
+        android:id="@+id/one_top_horizontal_two_bottom"
+        android:enabled="true"
+        android:icon="@drawable/ic_one_top_horizontal_two_bottom"
+        android:title="@string/layout"/>
+
+
+</menu>

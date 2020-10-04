@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="2dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
+
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/imageVerticalOne"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="0.5"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gym"
+            tools:ignore="NestedWeights" />
+
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/imageVerticalTwo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_weight="0.5"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gym" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
+
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/imageVerticalThree"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="0.33"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gym"
+            tools:ignore="NestedWeights" />
+
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/imageVerticalFour"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="0.33"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gym" />
+
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/imageVerticalFive"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_weight="0.33"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gym" />
+    </LinearLayout>
+</LinearLayout>

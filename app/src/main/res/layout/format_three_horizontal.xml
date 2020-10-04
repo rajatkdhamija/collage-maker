@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llThreeHorizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/imageVerticalOne"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="2dp"
+        android:layout_weight="0.33"
+        android:scaleType="centerCrop"
+        android:src="@drawable/gym" />
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/imageVerticalTwo"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_weight="0.33"
+        android:scaleType="centerCrop"
+        android:src="@drawable/gym" />
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/imageVerticalThree"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="2dp"
+        android:layout_weight="0.33"
+        android:scaleType="centerCrop"
+        android:src="@drawable/gym" />
+</LinearLayout>

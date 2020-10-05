@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_above="@+id/layout_navigation"/>
+        android:layout_above="@+id/layout_navigation">
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/outputImage"
@@ -28,7 +29,8 @@
         android:background="@android:color/white"
         app:labelVisibilityMode="unlabeled"
         android:layout_above="@id/bottom_navigation"
-        app:menu="@menu/three_layout_navigation" />
+        android:visibility="gone"
+        app:menu="@menu/five_layout_navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

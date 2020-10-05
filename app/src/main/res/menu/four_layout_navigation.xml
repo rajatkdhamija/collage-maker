@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/four_square_one"
+        android:enabled="true"
+        android:icon="@drawable/ic_four_square"
+        android:title="@string/text"/>
+
+    <item
+        android:id="@+id/four_square_type_two"
+        android:enabled="true"
+        android:icon="@drawable/ic_four_square_type_two"
+        android:title="@string/layout"/>
+
+    <item
+        android:id="@+id/four_square_type_three"
+        android:enabled="true"
+        android:icon="@drawable/ic_four_square_type_three"
+        android:title="@string/layout"/>
+
+    <item
+        android:id="@+id/four_square_type_four"
+        android:enabled="true"
+        android:icon="@drawable/ic_four_square_type_four"
+        android:title="@string/layout"/>
+
+    <item
+        android:id="@+id/four_square_type_five"
+        android:enabled="true"
+        android:icon="@drawable/ic_four_square_type_five"
+        android:title="@string/layout"/>
+
+
+</menu>

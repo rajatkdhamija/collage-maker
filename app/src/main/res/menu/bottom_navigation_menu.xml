@@ -12,7 +12,7 @@
         android:title="@string/text"/>
 
     <item
-        android:id="@+id/add"
+        android:id="@+id/image"
         android:enabled="true"
         android:icon="@drawable/ic_add"
         android:title="@string/image"/>

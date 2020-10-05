@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llTwoCenterBottomOneTop"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -12,7 +13,7 @@
         android:layout_marginBottom="2dp"
         android:layout_weight="0.33"
         android:scaleType="centerCrop"
-        android:src="@drawable/gym"
+        tools:src="@drawable/gym"
         tools:ignore="NestedWeights" />
 
     <LinearLayout
@@ -30,7 +31,7 @@
             android:layout_marginEnd="2dp"
             android:layout_weight="0.5"
             android:scaleType="centerCrop"
-            android:src="@drawable/gym"
+            tools:src="@drawable/gym"
             tools:ignore="NestedWeights" />
 
         <com.github.chrisbanes.photoview.PhotoView
@@ -40,7 +41,7 @@
             android:layout_marginStart="2dp"
             android:layout_weight="0.5"
             android:scaleType="centerCrop"
-            android:src="@drawable/gym" />
+            tools:src="@drawable/gym" />
     </LinearLayout>
 
     <LinearLayout
@@ -57,7 +58,7 @@
             android:layout_marginEnd="2dp"
             android:layout_weight="0.5"
             android:scaleType="centerCrop"
-            android:src="@drawable/gym"
+            tools:src="@drawable/gym"
             tools:ignore="NestedWeights" />
 
         <com.github.chrisbanes.photoview.PhotoView
@@ -67,6 +68,6 @@
             android:layout_marginStart="2dp"
             android:layout_weight="0.5"
             android:scaleType="centerCrop"
-            android:src="@drawable/gym" />
+            tools:src="@drawable/gym" />
     </LinearLayout>
 </LinearLayout>

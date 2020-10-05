@@ -1,37 +1,37 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
-INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
-INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
-INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
-INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
-INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
-INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
+ADDED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
+INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
+INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
+INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
+INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
+INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
+INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
 	package
-		ADDED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml:2:11-52
-		INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
-		INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
+		ADDED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml:2:11-52
+		INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml
+		INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
-		ADDED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
-		INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
+		INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml
+		ADDED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
+		INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
+		ADDED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
 	android:versionCode
-		INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
-		ADDED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
-		INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
+		INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml
+		ADDED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml:2:1-4:12
+		INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml
 uses-sdk
-INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
-INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
-INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
-INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
+INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml
+INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml
+INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml
+INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
-		ADDED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
-		INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
+		INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml
+		ADDED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml
+		INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
-		ADDED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
-		INJECTED from /Users/rajatdhamija/Desktop/rajat/collage-maker/photoview/src/main/AndroidManifest.xml
+		INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml
+		ADDED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml
+		INJECTED from /Users/work/Desktop/work/collage-maker/photoview/src/main/AndroidManifest.xml

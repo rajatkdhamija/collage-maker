@@ -19,7 +19,8 @@
            android:layout_weight="0.5"
            android:scaleType="centerCrop"
            android:layout_marginBottom="2dp"
-           tools:src="@drawable/gym"
+           android:background="@color/transparent"
+tools:src="@drawable/gym"
            tools:ignore="NestedWeights" />
 
        <com.github.chrisbanes.photoview.PhotoView
@@ -29,7 +30,8 @@
            android:layout_weight="0.5"
            android:layout_marginTop="2dp"
            android:scaleType="centerCrop"
-           tools:src="@drawable/gym" />
+           android:background="@color/transparent"
+tools:src="@drawable/gym" />
    </LinearLayout>
 
     <com.github.chrisbanes.photoview.PhotoView
@@ -39,5 +41,6 @@
         android:layout_marginStart="2dp"
         android:layout_weight="0.5"
         android:scaleType="centerCrop"
-        tools:src="@drawable/gym" />
+        android:background="@color/transparent"
+tools:src="@drawable/gym" />
 </LinearLayout>

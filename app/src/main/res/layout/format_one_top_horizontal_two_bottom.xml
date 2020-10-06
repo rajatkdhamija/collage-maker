@@ -13,7 +13,8 @@
         android:layout_marginBottom="2dp"
         android:layout_weight="0.5"
         android:scaleType="centerCrop"
-        tools:src="@drawable/gym" />
+        android:background="@color/transparent"
+tools:src="@drawable/gym" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +31,8 @@
             android:layout_marginEnd="2dp"
             android:layout_weight="0.5"
             android:scaleType="centerCrop"
-            tools:src="@drawable/gym"
+            android:background="@color/transparent"
+tools:src="@drawable/gym"
             tools:ignore="NestedWeights" />
 
         <com.github.chrisbanes.photoview.PhotoView
@@ -41,7 +43,8 @@
             android:layout_marginTop="2dp"
             android:layout_weight="0.5"
             android:scaleType="centerCrop"
-            tools:src="@drawable/gym" />
+            android:background="@color/transparent"
+tools:src="@drawable/gym" />
     </LinearLayout>
 
 </LinearLayout>

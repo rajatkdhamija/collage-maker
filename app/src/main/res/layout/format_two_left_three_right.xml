@@ -20,7 +20,8 @@
             android:layout_marginBottom="2dp"
             android:layout_weight="0.5"
             android:scaleType="centerCrop"
-            tools:src="@drawable/gym"
+            android:background="@color/transparent"
+tools:src="@drawable/gym"
             tools:ignore="NestedWeights" />
 
         <com.github.chrisbanes.photoview.PhotoView
@@ -30,7 +31,8 @@
             android:layout_marginTop="2dp"
             android:layout_weight="0.5"
             android:scaleType="centerCrop"
-            tools:src="@drawable/gym" />
+            android:background="@color/transparent"
+tools:src="@drawable/gym" />
     </LinearLayout>
 
     <LinearLayout
@@ -47,7 +49,8 @@
             android:layout_marginBottom="2dp"
             android:layout_weight="0.33"
             android:scaleType="centerCrop"
-            tools:src="@drawable/gym"
+            android:background="@color/transparent"
+tools:src="@drawable/gym"
             tools:ignore="NestedWeights" />
 
         <com.github.chrisbanes.photoview.PhotoView
@@ -58,7 +61,8 @@
             android:layout_marginBottom="2dp"
             android:layout_weight="0.33"
             android:scaleType="centerCrop"
-            tools:src="@drawable/gym" />
+            android:background="@color/transparent"
+tools:src="@drawable/gym" />
 
         <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/imageVerticalFive"
@@ -67,6 +71,7 @@
             android:layout_marginTop="2dp"
             android:layout_weight="0.33"
             android:scaleType="centerCrop"
-            tools:src="@drawable/gym" />
+            android:background="@color/transparent"
+tools:src="@drawable/gym" />
     </LinearLayout>
 </LinearLayout>

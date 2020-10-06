@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,9 +12,16 @@
         android:id="@+id/llMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_above="@+id/layout_navigation">
-    </LinearLayout>
+        android:layout_above="@+id/layout_navigation"
+        android:orientation="vertical"></LinearLayout>
+
+    <ja.burhanrashid52.photoeditor.PhotoEditorView
+        android:id="@+id/photoEditorView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_navigation"
+        android:layout_centerInParent="true"
+        android:src="@drawable/transparent_image" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/outputImage"
@@ -22,22 +29,95 @@
         android:layout_height="match_parent"
         android:visibility="gone" />
 
+    <LinearLayout
+        android:id="@+id/llAdjust"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottom_navigation"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="@string/brightness" />
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/brightness"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/MySeekBar"
+                android:layout_weight="0.7" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="@string/contrast" />
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/contrast"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="@string/saturation" />
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/saturation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7" />
+        </LinearLayout>
+    </LinearLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/layout_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        app:labelVisibilityMode="unlabeled"
         android:layout_above="@id/bottom_navigation"
+        android:background="@android:color/white"
         android:visibility="gone"
+        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/five_layout_navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
         android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_navigation_menu" />
 
 </RelativeLayout>

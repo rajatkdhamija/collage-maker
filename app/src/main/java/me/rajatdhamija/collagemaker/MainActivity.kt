@@ -4,50 +4,64 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.easyfilepicker.Constant
 import com.easyfilepicker.activity.ImagePickActivity
 import com.easyfilepicker.filter.entity.ImageFile
 import com.github.chrisbanes.photoview.PhotoView
+import ja.burhanrashid52.photoeditor.OnPhotoEditorListener
+import ja.burhanrashid52.photoeditor.PhotoEditor
+import ja.burhanrashid52.photoeditor.PhotoEditorView
+import ja.burhanrashid52.photoeditor.ViewType
 import kotlinx.android.synthetic.main.activity_main.*
+import me.rajatdhamija.collagemaker.photoEditor.TextEditorDialogFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnPhotoEditorListener {
 
-    lateinit var llTwoHorizontal: View
-    lateinit var llTwoVertical: View
-    lateinit var llFourSquare: View
-    lateinit var llFourSquareTypeFive: View
-    lateinit var llFourSquareTypeFour: View
-    lateinit var llFourSquareTypeThree: View
-    lateinit var llFourSquareTypeTwo: View
-    lateinit var llOneTopHorizontalTwoBottom: View
-    lateinit var llThreeHorizontal: View
-    lateinit var llThreeVertical: View
-    lateinit var llTwoCenterBottomOneTop: View
-    lateinit var llTwoCenterTopOneBottom: View
-    lateinit var llTwoLeftThreeRight: View
-    lateinit var llTwoLeftVerticalOneRight: View
-    lateinit var llTwoRightVerticalOneLeft: View
-    lateinit var llTwoTopBottomOneCenter: View
-    lateinit var llTwoTopThreeBottom: View
+    private lateinit var llTwoHorizontal: View
+    private lateinit var llTwoVertical: View
+    private lateinit var llFourSquare: View
+    private lateinit var llFourSquareTypeFive: View
+    private lateinit var llFourSquareTypeFour: View
+    private lateinit var llFourSquareTypeThree: View
+    private lateinit var llFourSquareTypeTwo: View
+    private lateinit var llOneTopHorizontalTwoBottom: View
+    private lateinit var llThreeHorizontal: View
+    private lateinit var llThreeVertical: View
+    private lateinit var llTwoCenterBottomOneTop: View
+    private lateinit var llTwoCenterTopOneBottom: View
+    private lateinit var llTwoLeftThreeRight: View
+    private lateinit var llTwoLeftVerticalOneRight: View
+    private lateinit var llTwoRightVerticalOneLeft: View
+    private lateinit var llTwoTopBottomOneCenter: View
+    private lateinit var llTwoTopThreeBottom: View
+    private lateinit var imageVerticalOne: PhotoView
+    private lateinit var imageVerticalTwo: PhotoView
+    private lateinit var imageVerticalThree: PhotoView
+    private lateinit var imageVerticalFour: PhotoView
+    private lateinit var imageVerticalFive: PhotoView
+    private lateinit var imageVerticalOneBitmap: Bitmap
+    private lateinit var imageVerticalTwoBitmap: Bitmap
+    private lateinit var imageVerticalThreeBitmap: Bitmap
+    private lateinit var imageVerticalFourBitmap: Bitmap
+    private lateinit var imageVerticalFiveBitmap: Bitmap
+    private var mPhotoEditor: PhotoEditor? = null
+    private var contrastVal = 1f
+    private var brightnessVal = 0f
+    private var saturationVal = 1f
     private var imagesArray = ArrayList<String>()
     private var menuType = 0
-
-    lateinit var imageVerticalOne: PhotoView
-    lateinit var imageVerticalTwo: PhotoView
-    lateinit var imageVerticalThree: PhotoView
-    lateinit var imageVerticalFour: PhotoView
-    lateinit var imageVerticalFive: PhotoView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +70,212 @@ class MainActivity : AppCompatActivity() {
         imagesArray = intent.getStringArrayListExtra("images") as ArrayList<String>
         setUpLayoutNavigation()
         setUpBottomNavigation()
+        setUpPhotoEditorView()
+        setUpAdjustSeekBar()
+        llAdjust.setOnClickListener {
+
+        }
+    }
+
+    private fun setUpAdjustSeekBar() {
+        brightness.progressDrawable.setColorFilter(
+            Color.parseColor("#6200EE"),
+            PorterDuff.Mode.SRC_IN
+        )
+        brightness.thumb.setColorFilter(Color.parseColor("#6200EE"), PorterDuff.Mode.SRC_IN)
+        brightness.progress = 50
+        contrast.progressDrawable.setColorFilter(
+            Color.parseColor("#6200EE"),
+            PorterDuff.Mode.SRC_IN
+        )
+        contrast.thumb.setColorFilter(Color.parseColor("#6200EE"), PorterDuff.Mode.SRC_IN)
+        contrast.progress = 0
+        contrast.max = 200
+
+        saturation.progressDrawable.setColorFilter(
+            Color.parseColor("#6200EE"),
+            PorterDuff.Mode.SRC_IN
+        )
+        saturation.thumb.setColorFilter(Color.parseColor("#6200EE"), PorterDuff.Mode.SRC_IN)
+        saturation.progress = 100
+        saturation.max = 200
+
+
+        brightness.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                brightnessVal = when {
+                    progress < 50 -> {
+                        (50 - progress) * -2.55f
+                    }
+                    progress == 50 -> {
+                        0f
+                    }
+                    else -> {
+                        (progress - 50) * 2.55f
+                    }
+                }
+                setAdjustedImages(contrastVal, brightnessVal, saturationVal)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+        })
+        contrast.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                contrastVal = (progress / 100f)
+                setAdjustedImages(contrastVal, brightnessVal, saturationVal)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+        })
+        saturation.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                saturationVal = (progress / 100f)
+                setAdjustedImages(contrastVal, brightnessVal, saturationVal)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+        })
+
+
+    }
+
+    private fun setAdjustedImages(contrastVal: Float, brightnessVal: Float, saturationVal: Float) {
+        when (imagesArray.size) {
+            1, 2 -> {
+                adjustImage(
+                    contrastVal,
+                    brightnessVal,
+                    saturationVal,
+                    imageVerticalOne,
+                    imageVerticalOneBitmap
+                )
+                adjustImage(
+                    contrastVal,
+                    brightnessVal,
+                    saturationVal,
+                    imageVerticalTwo,
+                    imageVerticalTwoBitmap
+                )
+            }
+            3 -> {
+                adjustImage(
+                    contrastVal,
+                    brightnessVal,
+                    saturationVal,
+                    imageVerticalOne,
+                    imageVerticalOneBitmap
+                )
+                adjustImage(
+                    contrastVal,
+                    brightnessVal,
+                    saturationVal,
+                    imageVerticalTwo,
+                    imageVerticalTwoBitmap
+                )
+                adjustImage(
+                    contrastVal,
+                    brightnessVal,
+                    saturationVal,
+                    imageVerticalThree,
+                    imageVerticalThreeBitmap
+                )
+            }
+            4 -> {
+                adjustImage(
+                    contrastVal,
+                    brightnessVal,
+                    saturationVal,
+                    imageVerticalOne,
+                    imageVerticalOneBitmap
+                )
+                adjustImage(
+                    contrastVal,
+                    brightnessVal,
+                    saturationVal,
+                    imageVerticalTwo,
+                    imageVerticalTwoBitmap
+                )
+                adjustImage(
+                    contrastVal,
+                    brightnessVal,
+                    saturationVal,
+                    imageVerticalThree,
+                    imageVerticalThreeBitmap
+                )
+                adjustImage(
+                    contrastVal,
+                    brightnessVal,
+                    saturationVal,
+                    imageVerticalFour,
+                    imageVerticalFourBitmap
+                )
+            }
+            5 -> {
+                adjustImage(
+                    contrastVal,
+                    brightnessVal,
+                    saturationVal,
+                    imageVerticalOne,
+                    imageVerticalOneBitmap
+                )
+                adjustImage(
+                    contrastVal,
+                    brightnessVal,
+                    saturationVal,
+                    imageVerticalTwo,
+                    imageVerticalTwoBitmap
+                )
+                adjustImage(
+                    contrastVal,
+                    brightnessVal,
+                    saturationVal,
+                    imageVerticalThree,
+                    imageVerticalThreeBitmap
+                )
+                adjustImage(
+                    contrastVal,
+                    brightnessVal,
+                    saturationVal,
+                    imageVerticalFour,
+                    imageVerticalFourBitmap
+                )
+                adjustImage(
+                    contrastVal,
+                    brightnessVal,
+                    saturationVal,
+                    imageVerticalFive,
+                    imageVerticalFiveBitmap
+                )
+            }
+        }
+    }
+
+    private fun adjustImage(
+        contrastVal: Float,
+        brightnessVal: Float,
+        saturationVal: Float,
+        image: PhotoView,
+        bitmap: Bitmap
+    ) {
+        image.setImageBitmap(
+            changeBitmapContrastBrightness(
+                bitmap,
+                contrastVal,
+                brightnessVal,
+                saturationVal
+            )
+        )
+    }
+
+    private fun setUpPhotoEditorView() {
+        val mPhotoEditorView: PhotoEditorView = findViewById(R.id.photoEditorView)
+        mPhotoEditor = PhotoEditor.Builder(this, mPhotoEditorView)
+            .setPinchTextScalable(true)
+            .build()
+        mPhotoEditor?.setOnPhotoEditorListener(this)
     }
 
     private fun setImagesInViews() {
@@ -72,21 +292,40 @@ class MainActivity : AppCompatActivity() {
             1 -> {
                 setImage(imagesArray[0], imageVerticalOne)
                 setImage(imagesArray[0], imageVerticalTwo)
+                Handler().postDelayed({
+                    imageVerticalOneBitmap = getBitmapFromView(imageVerticalOne)!!
+                    imageVerticalTwoBitmap = getBitmapFromView(imageVerticalTwo)!!
+                }, 300)
             }
             2 -> {
                 setImage(imagesArray[0], imageVerticalOne)
                 setImage(imagesArray[1], imageVerticalTwo)
+                Handler().postDelayed({
+                    imageVerticalOneBitmap = getBitmapFromView(imageVerticalOne)!!
+                    imageVerticalTwoBitmap = getBitmapFromView(imageVerticalTwo)!!
+                }, 300)
             }
             3 -> {
                 setImage(imagesArray[0], imageVerticalOne)
                 setImage(imagesArray[1], imageVerticalTwo)
                 setImage(imagesArray[2], imageVerticalThree)
+                Handler().postDelayed({
+                    imageVerticalOneBitmap = getBitmapFromView(imageVerticalOne)!!
+                    imageVerticalTwoBitmap = getBitmapFromView(imageVerticalTwo)!!
+                    imageVerticalThreeBitmap = getBitmapFromView(imageVerticalThree)!!
+                }, 300)
             }
             4 -> {
                 setImage(imagesArray[0], imageVerticalOne)
                 setImage(imagesArray[1], imageVerticalTwo)
                 setImage(imagesArray[2], imageVerticalThree)
                 setImage(imagesArray[3], imageVerticalFour)
+                Handler().postDelayed({
+                    imageVerticalOneBitmap = getBitmapFromView(imageVerticalOne)!!
+                    imageVerticalTwoBitmap = getBitmapFromView(imageVerticalTwo)!!
+                    imageVerticalThreeBitmap = getBitmapFromView(imageVerticalThree)!!
+                    imageVerticalFourBitmap = getBitmapFromView(imageVerticalFour)!!
+                }, 300)
             }
             5 -> {
                 setImage(imagesArray[0], imageVerticalOne)
@@ -94,6 +333,13 @@ class MainActivity : AppCompatActivity() {
                 setImage(imagesArray[2], imageVerticalThree)
                 setImage(imagesArray[3], imageVerticalFour)
                 setImage(imagesArray[4], imageVerticalFive)
+                Handler().postDelayed({
+                    imageVerticalOneBitmap = getBitmapFromView(imageVerticalOne)!!
+                    imageVerticalTwoBitmap = getBitmapFromView(imageVerticalTwo)!!
+                    imageVerticalThreeBitmap = getBitmapFromView(imageVerticalThree)!!
+                    imageVerticalFourBitmap = getBitmapFromView(imageVerticalFour)!!
+                    imageVerticalFiveBitmap = getBitmapFromView(imageVerticalFive)!!
+                }, 300)
             }
         }
     }
@@ -106,11 +352,28 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.layout -> {
+                    llAdjust.visibility = View.GONE
                     setUpLayoutNavigation()
                     true
                 }
-                R.id.text -> {
+
+                R.id.adjust -> {
                     hideLayoutNavigation()
+                    llAdjust.visibility = View.VISIBLE
+                    true
+                }
+
+                R.id.text -> {
+                    llAdjust.visibility = View.GONE
+                    hideLayoutNavigation()
+                    val textEditorDialogFragment = TextEditorDialogFragment.show(this)
+
+                    textEditorDialogFragment.setOnTextEditorListener { inputText, colorCode ->
+                        mPhotoEditor?.addText(
+                            inputText,
+                            colorCode
+                        )
+                    }
                     true
                 }
                 R.id.image -> {
@@ -355,23 +618,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getBitmapFromView(view: View): Bitmap? {
-        //Define a bitmap with the same size as the view
         val returnedBitmap: Bitmap =
             Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
-        //Bind a canvas to it
         val canvas = Canvas(returnedBitmap)
-        //Get the view's background
         val bgDrawable: Drawable = view.background
         if (bgDrawable != null) {
-            //has background drawable, then draw it on the canvas
             bgDrawable.draw(canvas)
         } else {
-            //does not have background drawable, then draw white background on the canvas
             canvas.drawColor(Color.WHITE)
         }
-        // draw the view on the canvas
         view.draw(canvas)
-        //return the bitmap
         return returnedBitmap
     }
 
@@ -388,4 +644,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onEditTextChangeListener(rootView: View?, text: String?, colorCode: Int) {
+        val textEditorDialogFragment = TextEditorDialogFragment.show(this, text!!, colorCode)
+        textEditorDialogFragment.setOnTextEditorListener { inputText, colorCode ->
+            mPhotoEditor?.editText(
+                rootView!!, inputText, colorCode
+            )
+        }
+    }
+
+    override fun onStartViewChangeListener(viewType: ViewType?) {}
+    override fun onRemoveViewListener(viewType: ViewType?, numberOfAddedViews: Int) {}
+    override fun onAddViewListener(viewType: ViewType?, numberOfAddedViews: Int) {}
+    override fun onStopViewChangeListener(viewType: ViewType?) {}
 }

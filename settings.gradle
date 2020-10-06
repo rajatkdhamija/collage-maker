@@ -1,2 +1,2 @@
-include ':app', ':photoview', 'easyfilepicker'
+include ':app', ':photoview', 'easyfilepicker', ':photoeditor'
 rootProject.name = "Collage Maker"

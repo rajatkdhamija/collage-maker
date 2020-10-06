@@ -12,6 +12,12 @@
         android:title="@string/text"/>
 
     <item
+        android:id="@+id/adjust"
+        android:enabled="true"
+        android:icon="@drawable/ic_sun"
+        android:title="@string/adjust"/>
+
+    <item
         android:id="@+id/image"
         android:enabled="true"
         android:icon="@drawable/ic_add"
